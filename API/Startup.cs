@@ -21,6 +21,7 @@ using System.Text;
 using API.Extensions;
 using API.Middleware;
 
+
 namespace API
 {
     public class Startup
@@ -44,7 +45,11 @@ namespace API
             services.AddControllers();
             services.AddCors();
             services.AddIdentityservices(_config);
-
+/*             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options=>{options.TokenValidationParameters = new TokenValidationParameters{
+                ValidateIssuerSigningKey = true,  
+                IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value)),
+                ValidateIssuer=false, ValidateAudience = false };
+                     });  */           
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });

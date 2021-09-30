@@ -20,7 +20,8 @@
          
 
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown> 
-          <a  class="dropdown-toggle text-light" dropdownToggle>Welcome {{user.userName | titlecase}}</a>
+          <img src="{{user.photoUrl}}" alt="{{user.userName}}">
+          <a  class="dropdown-toggle text-light ml-2" dropdownToggle>Welcome {{user.userName | titlecase}}</a>
           <div class="dropdown-menu mt-3" *dropdownMenu> 
             <a routerLink='/member/edit'  class="dropdown-item">Edit Profile</a>
             <div class="dropdown-divider"></div>
@@ -29,7 +30,7 @@
         </div>
 
 
-        <form *ngIf="(accountService.currentUser$ | async)"  #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)= "login()" autocomplete="off">
+        <form *ngIf="!(accountService.currentUser$ | async )"  #loginForm="ngForm" class="form-inline mt-2 mt-md-0" (ngSubmit)= "login()" autocomplete="off">
           <input name = "username" [(ngModel)]="model.username" class="form-control mr-sm-2" type="search" placeholder="UserName" >
           <input name="Password" [(ngModel)]="model.password" class="form-control mr-sm-2" type="search" placeholder="Password">
           <button class="btn btn-success" type="submit">Login</button>

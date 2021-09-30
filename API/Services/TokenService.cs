@@ -24,7 +24,7 @@ namespace API.Services
                 new Claim(JwtRegisteredClaimNames.UniqueName, user.UserName)
 
             };
-            var cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
+            SigningCredentials cred = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescriptor = new SecurityTokenDescriptor{
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(7)
