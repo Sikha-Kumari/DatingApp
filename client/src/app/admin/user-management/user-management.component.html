@@ -6,7 +6,7 @@
             <th style="width: 30%;"></th>
         </tr>
         <tr *ngFor="let user of users">
-            <td>{{user.userName}}</td>
+            <td>{{user.username}}</td>
             <td>{{user.roles}}</td>
             <td><button (click)="openRolesModal(user)" class="btn btn-info">Edit Roles</button></td>
         </tr>
