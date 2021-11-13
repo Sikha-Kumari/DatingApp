@@ -88,7 +88,6 @@ namespace API.Data
             string recipientUsername)
         {
             var messages = await _context.Messages
-            //.Include(u => u.Sender).ThenInclude(p =>p.Photos)
                 .Where(m => m.Recipient.UserName == currentUsername && m.RecipientDeleted == false
                         && m.Sender.UserName == recipientUsername
                         || m.Recipient.UserName == recipientUsername
@@ -107,8 +106,5 @@ namespace API.Data
             _context.Connections.Remove(connection);
         }
 
-        public async Task<bool> SaveAllAsync(){
-             return await _context.SaveChangesAsync() > 0;
-        }
     }
 }
