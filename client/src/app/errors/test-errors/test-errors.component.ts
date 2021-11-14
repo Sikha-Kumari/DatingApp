@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class TestErrorsComponent implements OnInit {
 
 
- baseUrl = 'https://localhost:5001/api/'
+ baseUrl = environment.apiUrl;
 
   validationErrors: string[] = [];
 
